@@ -23,11 +23,20 @@ function App() {
       reminder: false,
     }
   ])
+
+  // Delete Task
+  const deleteTask = (id) => {
+    // console.log('delete', id)
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
+
   return (
     <div className="container">
       <h1>Hello from React</h1>
       <Header title='app header' />
-      <Tasks tasks={tasks} />
+      {tasks.length > 0 ?
+        (<Tasks tasks={tasks} onDelete={deleteTask} />) :
+        ('No Tasks to show')}
     </div>
   );
 }
