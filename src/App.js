@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -24,6 +25,16 @@ function App() {
     }
   ])
 
+  // Add Task
+  const addTask = (task) => {
+    // create a new random id
+    const id = Math.floor(Math.random() * 10000) + 1
+    // crate a new task with random id
+    const newTask = { id, ...task }
+    // adding new task to tasks list
+    setTasks([...tasks, newTask])
+  }
+
   // Delete Task
   const deleteTask = (id) => {
     // console.log('delete', id)
@@ -42,7 +53,8 @@ function App() {
   return (
     <div className="container">
       <h1>Hello from React</h1>
-      <Header title='app header' />
+      <Header />
+      <AddTask onAdd={addTask} />
       {tasks.length > 0
         ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />)
         : ('No Tasks to show')}
