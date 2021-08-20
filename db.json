@@ -17,6 +17,12 @@
       "text": "Food shoping",
       "day": "Feb 6th at 2: 30pm",
       "reminder": false
+    },
+    {
+      "text": "test2",
+      "day": "test4",
+      "reminder": true,
+      "id": 4
     }
   ]
 }
